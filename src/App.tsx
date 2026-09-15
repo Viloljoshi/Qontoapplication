@@ -64,7 +64,7 @@ function AppHeader({ view, onView }: { view: ViewMode; onView: (view: ViewMode) 
           <span className="brand-mark" aria-hidden="true">D</span>
           <span>
             <strong>Qonto Due Diligence</strong>
-            <small>Outside-in product proposal</small>
+            <small>Entry checks · Agent workflows · Periodic review</small>
           </span>
         </a>
         <div className="header-actions">
@@ -120,9 +120,9 @@ function BriefCover({ onInteractive }: { onInteractive: () => void }) {
       </div>
 
       <div className="cover-intro">
-        <p className="overline">The Product Problem</p>
-        <h1 id="cover-title">Four checks are clear. Ownership is not.</h1>
-        <p>At sign-up, Qonto must decide whether this fictional SME can become a customer. Its company, representative, identity, and sanctions checks have cleared. Two ownership sources conflict.</p>
+        <p className="overline">Problem Hypothesis · At Sign-up</p>
+        <h1 id="cover-title">One ownership conflict can restart the whole review.</h1>
+        <p>Qonto must decide whether fictional SME Lumen Bikes GmbH can become a customer. Four checks have cleared. Two ownership records disagree, 60/40 versus 75/25. The customer and reviewer risk repeating work that cannot resolve the conflict.</p>
       </div>
 
       <div className="cover-system" aria-label="A fictional due-diligence case and proposed handling">
@@ -152,8 +152,8 @@ function BriefCover({ onInteractive }: { onInteractive: () => void }) {
 
       <div className="cover-logic">
         <div><span>Problem Hypothesis</span><p>When one source conflicts, reviewers may rebuild cleared work and customers may repeat valid proof.</p></div>
-        <div><span>Product Hypothesis</span><p>Preserve cleared assertions. Re-check the conflict. Route it with the evidence and reason attached.</p></div>
-        <div><span>Proof Test</span><p>Shadow one Germany, GmbH, ownership-conflict cohort. Compare requests, rework, decision quality, and reconstruction.</p></div>
+        <div><span>Product Hypothesis</span><p>Keep the four cleared checks. Re-check ownership. Give the reviewer the conflicting records, rule, and reason.</p></div>
+        <div><span>Proof Test</span><p>Run both flows for one German GmbH cohort. Compare repeat requests, reviewer time, wrong decisions, and audit completeness.</p></div>
       </div>
 
       <div className="cover-actions">
@@ -299,16 +299,20 @@ function ExecutiveBrief({ onInteractive }: { onInteractive: () => void }) {
 
         <section className="brief-credibility">
           <div>
-            <p className="overline">Relevant Prior Pattern · Solytics Partners</p>
-            <p>
-              I led regulated compliance-product work using OCR + LLM extraction, field confidence, exception routing, policy guards, scoped tool execution, and audit trails. Prior-role outcomes included a 45% reduction in compliance review effort and a 25% cut in AML/KYC integration turnaround. These are prior-role results, not Qonto estimates.
-            </p>
+            <p className="overline">What I Bring</p>
+            <ul className="brief-fit-list">
+              <li><strong>Regulated product delivery</strong><span>KYC/AML workflows using OCR + LLM extraction, field confidence, human review, policy controls, and audit trails.</span></li>
+              <li><strong>Ops-led evaluation</strong><span>Golden cases, reviewer corrections, cohort calibration, drift checks, and safe migration gates.</span></li>
+              <li><strong>Measured outcomes</strong><span>45% less compliance review effort and 25% faster AML/KYC integration turnaround in a previous role.</span></li>
+            </ul>
           </div>
           <div>
-            <p className="overline">First 30 Days</p>
-            <p>
-              Validate the top 3 exception families, reconstruct 25 recent decisions with Ops and Compliance, define quality gates, and select one bounded cohort for shadow evaluation.
-            </p>
+            <p className="overline">What I Want to Understand</p>
+            <ol className="brief-question-list">
+              <li>Which exceptions create the most repeat work?</li>
+              <li>Where can agents decide, and where must specialists judge?</li>
+              <li>What evidence proves a reviewer cohort is safe to migrate?</li>
+            </ol>
           </div>
         </section>
 
@@ -401,6 +405,39 @@ function DecisionStateVisual() {
   );
 }
 
+function PolicyReleaseVisual() {
+  const steps = [
+    ["01", "Define", "Compliance states the obligation and decision impact."],
+    ["02", "Scope", "Product finds the affected country, legal form, and cases."],
+    ["03", "Configure", "Engineering versions the rule, evidence need, and authority."],
+    ["04", "Replay", "Data tests the change against signed historical cases."],
+    ["05", "Approve", "Compliance signs the results, limits, and stop gates."],
+    ["06", "Release", "The team shadows one cohort, monitors it, and can roll back."],
+  ];
+
+  return (
+    <section className="policy-release" aria-labelledby="policy-release-title">
+      <header>
+        <div>
+          <p className="overline">Owning Entry Rules · Illustrative Workflow</p>
+          <h3 id="policy-release-title">Test a rule change before it changes a customer decision.</h3>
+        </div>
+        <p>Example scope: Germany · GmbH · ownership evidence</p>
+      </header>
+      <div className="policy-release-steps">
+        {steps.map(([number, title, note]) => (
+          <div key={number}>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{note}</p>
+          </div>
+        ))}
+      </div>
+      <footer>Every outcome keeps the evidence, rule version, model version, authority, and time that produced it.</footer>
+    </section>
+  );
+}
+
 function evidenceStateLabel(status: EvidenceItem["status"]) {
   if (status === "trusted") return "Trusted";
   if (status === "conflict") return "Conflict";
@@ -411,11 +448,44 @@ function evidenceStateLabel(status: EvidenceItem["status"]) {
 function CasePacket({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; onScenario: (key: CaseScenarioKey) => void }) {
   const scenario = caseScenarios[scenarioKey];
   const [selectedId, setSelectedId] = useState("ownership");
-  const [action, setAction] = useState("");
+  const [actionOpen, setActionOpen] = useState(false);
   const selected = useMemo(
     () => scenario.evidence.find((item) => item.id === selectedId) ?? scenario.evidence[0],
     [scenario, selectedId],
   );
+
+  const actionPreview = {
+    current: {
+      label: "Draft Evidence Request",
+      title: "Evidence request ready for reviewer approval",
+      items: [
+        ["Customer sees", "Please provide a dated shareholder list or another current ownership document."],
+        ["Reviewer sees", "Register 60/40, uploaded list 75/25, both sources, and the applicable rule."],
+        ["Preserved", "Company, authority, identity, and sanctions checks."],
+      ],
+      guard: "Nothing is sent until an authorised reviewer approves the request.",
+    },
+    resolved: {
+      label: "Decision Trace",
+      title: "Why this case became eligible for resolution",
+      items: [
+        ["New evidence", "A dated filing receipt explains the register lag and supports the declared 75/25 ownership."],
+        ["Gates passed", "Evidence, policy, permission, and evaluation."],
+        ["Record kept", "Sources, rule, model, tool calls, authority, and decision time."],
+      ],
+      guard: "The original mismatch remains in the case history.",
+    },
+    sanctions: {
+      label: "Specialist Escalation Packet",
+      title: "The judgment an authorised specialist must make",
+      items: [
+        ["Question", "Does the name and date-of-birth overlap refer to the declared owner?"],
+        ["Evidence", "Raw match factors, provider response, list version, and ownership scope."],
+        ["Agent action", "Stopped automatic resolution and prepared the evidence."],
+      ],
+      guard: "Only an authorised specialist can clear or confirm the match.",
+    },
+  }[scenarioKey];
 
   const actionLabel =
     scenarioKey === "current"
@@ -437,7 +507,7 @@ function CasePacket({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey;
             tabIndex={scenarioKey === key ? 0 : -1}
             key={key}
             onClick={() => {
-              setAction("");
+              setActionOpen(false);
               onScenario(key);
             }}
           >
@@ -509,12 +579,31 @@ function CasePacket({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey;
           </div>
           <button
             type="button"
-            onClick={() => setAction("Prototype action prepared. No external action was taken.")}
+            aria-expanded={actionOpen}
+            aria-controls="case-action-preview"
+            onClick={() => setActionOpen(true)}
           >
             {actionLabel}
           </button>
         </footer>
-        <p className="action-feedback" role="status">{action}</p>
+        {actionOpen && (
+          <section className="case-action-preview" id="case-action-preview" aria-labelledby="case-action-preview-title">
+            <header>
+              <div>
+                <p className="overline">{actionPreview.label}</p>
+                <h4 id="case-action-preview-title">{actionPreview.title}</h4>
+              </div>
+              <button type="button" onClick={() => setActionOpen(false)}>Close Preview</button>
+            </header>
+            <div className="case-action-preview-grid">
+              {actionPreview.items.map(([label, value]) => (
+                <div key={label}><span>{label}</span><p>{value}</p></div>
+              ))}
+            </div>
+            <footer>{actionPreview.guard}</footer>
+          </section>
+        )}
+        <p className="action-feedback" role="status">{actionOpen ? `${actionPreview.label} opened. No external action was taken.` : ""}</p>
       </div>
       <p className="fiction-note">Fictional case and illustrative rules. Built to show the product model, not to copy a Qonto screen or policy.</p>
     </div>
@@ -607,37 +696,61 @@ function BuildPartnerBoundary() {
 }
 
 function SolyticsProof() {
+  const transferRows = [
+    [
+      "Entry checks across markets",
+      "Document verification at scale",
+      "Led OCR + LLM extraction, field confidence, and exception routing.",
+      "Ground each field in evidence. Route uncertainty.",
+    ],
+    [
+      "Agentic compliance decisions",
+      "Governed tool orchestration",
+      "Defined policy guards, scoped tool calls, verification, and audit trails.",
+      "Model capability does not grant decision authority.",
+    ],
+    [
+      "Decision quality over time",
+      "Evaluation and feedback loops",
+      "Used golden cases, reviewer corrections, cohort calibration, and drift checks.",
+      "Test the full case path, not one model response.",
+    ],
+    [
+      "Reviewer workflow migration",
+      "Ops efficiency in regulated flows",
+      "Delivered 45% less review effort and 25% faster AML/KYC integration turnaround.",
+      "Prove quality and recovery before moving a cohort.",
+    ],
+  ];
+
   return (
     <section className="solytics-proof" aria-labelledby="solytics-proof-title">
       <header>
         <div>
-          <p className="overline">Built Before · Solytics Partners</p>
-          <h3 id="solytics-proof-title">A governed compliance-agent pattern</h3>
+          <p className="overline">Prior Work · Solytics Partners</p>
+          <h3 id="solytics-proof-title">How my prior work transfers</h3>
         </div>
-        <span>Prior-role evidence · No Qonto estimate</span>
+        <span>Previous-role results</span>
       </header>
-      <div className="solytics-proof-grid">
-        <div>
-          <span>Product Problem</span>
-          <p>Modernise a legacy compliance platform for enterprise banking teams without weakening security or regulatory sign-off.</p>
+      <div className="solytics-transfer" role="table" aria-label="Transfer from prior work to Qonto's due-diligence challenges">
+        <div className="solytics-transfer-head" role="row">
+          <span role="columnheader">Qonto challenge</span>
+          <span role="columnheader">Prior pattern</span>
+          <span role="columnheader">What I did</span>
+          <span role="columnheader">What transfers</span>
         </div>
-        <div>
-          <span>System I Led</span>
-          <p>OCR + LLM extraction, field confidence, pre/post-model guards, scoped tool calls, verification, and an audit trail.</p>
-        </div>
-        <div>
-          <span>Operating Model</span>
-          <p>Routine evidence followed governed paths. Specialists handled exceptions. Golden cases and reviewer corrections fed regression and cohort evaluation.</p>
-        </div>
-        <div className="solytics-results">
-          <span>Previous-Role Results</span>
-          <strong>45%</strong><p>less compliance review effort</p>
-          <strong>25%</strong><p>faster AML/KYC integration turnaround</p>
-        </div>
+        {transferRows.map(([challenge, pattern, work, principle]) => (
+          <div className="solytics-transfer-row" role="row" key={challenge}>
+            <strong role="cell">{challenge}</strong>
+            <span role="cell">{pattern}</span>
+            <p role="cell">{work}</p>
+            <p role="cell">{principle}</p>
+          </div>
+        ))}
       </div>
       <footer>
-        <span>Transferable principle</span>
-        <p>Give the agent narrow authority, test the full action path, and preserve the evidence behind each result.</p>
+        <span>Why this role</span>
+        <p>The open questions are concrete: which exceptions create the most work, where agents may commit a decision, and what proves each reviewer cohort is safe to migrate.</p>
       </footer>
     </section>
   );
@@ -675,7 +788,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             </article>
             <article>
               <EvidenceTag type="hypothesis">Hypothesis</EvidenceTag>
-              <h3>Decision-State Debt</h3>
+              <h3>Where Work May Repeat</h3>
               <p>Each new market, legal form, evidence source, and policy version can add customer requests and reviewer work when state becomes fragmented.</p>
             </article>
             <article>
@@ -715,6 +828,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
               <span>case_id</span><span>entity_graph_version</span><span>evidence_refs</span><span>policy_version</span><span>signal_versions</span><span>decision_reason</span><span>authority</span><span>tool_history</span><span>specialist_override</span><span>final_outcome</span>
             </div>
           </details>
+          <PolicyReleaseVisual />
           <SectionLens
             problem="A final label cannot explain itself."
             hypothesis="Versioned state makes decisions reproducible."
@@ -747,7 +861,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
           <ChapterHeading
             number="04"
             label="Autonomous Workflow"
-            title="Let agents finish routine cases inside a signed authority envelope."
+            title="Let agents complete routine cases only inside explicit policy and authority."
             intro={<>An agent may plan, call approved tools, recover from provider failure, and commit an eligible case. Deterministic gates decide whether it has authority. Specialists handle policy gaps, material sanctions ambiguity, and adverse judgment. Qonto’s public AI and security pages describe approval boundaries, ML signals, and automated safeguards.<SourceRef id={4} /><SourceRef id={6} /></>}
           />
           <AgentWorkflow />

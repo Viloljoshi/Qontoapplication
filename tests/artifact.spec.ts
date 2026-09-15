@@ -2,10 +2,12 @@ import { expect, test } from "@playwright/test";
 
 test("the executive brief is the default reading path", async ({ page }) => {
   await page.goto("./");
-  await expect(page.getByRole("heading", { name: "Four checks are clear. Ownership is not." })).toBeVisible();
-  await expect(page.getByText("At sign-up, Qonto must decide whether this fictional SME can become a customer.")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One ownership conflict can restart the whole review." })).toBeVisible();
+  await expect(page.getByText("Qonto must decide whether fictional SME Lumen Bikes GmbH can become a customer.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Read the 5-minute brief" })).toHaveAttribute("href", "#brief-start");
   await expect(page.getByRole("heading", { name: "A Trustworthy Decision System for Due Diligence" })).toBeVisible();
+  await expect(page.getByText("What I Bring")).toBeVisible();
+  await expect(page.getByText("What I Want to Understand")).toBeVisible();
   await expect(page.getByText("Page 2 / 2")).toBeVisible();
 });
 
@@ -20,7 +22,8 @@ test("the interactive model and case packet work", async ({ page }) => {
   await expect(page.getByText("A potential sanctions match has material ambiguity.")).toBeVisible();
 
   await page.getByRole("button", { name: "Open Escalation Packet" }).click();
-  await expect(page.getByRole("status")).toHaveText("Prototype action prepared. No external action was taken.");
+  await expect(page.getByRole("heading", { name: "The judgment an authorised specialist must make" })).toBeVisible();
+  await expect(page.getByRole("status")).toHaveText("Specialist Escalation Packet opened. No external action was taken.");
 });
 
 test("the layout does not overflow horizontally", async ({ page }) => {
