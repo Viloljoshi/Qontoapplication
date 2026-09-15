@@ -115,7 +115,7 @@ function BriefCover({ onInteractive }: { onInteractive: () => void }) {
   return (
     <section className="brief-cover" aria-labelledby="cover-title">
       <div className="cover-meta">
-        <span>Entry into relationship · Worked case</span>
+        <span>New customer check · Worked case</span>
         <span>Lumen Bikes GmbH · Germany · Fictional</span>
       </div>
 
@@ -136,9 +136,9 @@ function BriefCover({ onInteractive }: { onInteractive: () => void }) {
         </div>
         <div className="cover-arrow" aria-hidden="true">→</div>
         <div className="cover-core">
-          <span>Decision moment</span>
-          <strong>Can Lumen Bikes enter the relationship?</strong>
-          <small>Clear · Ask · Specialist review · Decline</small>
+          <span>Decision to make</span>
+          <strong>Can Qonto approve Lumen Bikes as a customer?</strong>
+          <small>Approve · Ask for proof · Specialist review · Decline</small>
         </div>
         <div className="cover-arrow" aria-hidden="true">→</div>
         <div className="cover-result">
@@ -521,7 +521,7 @@ function CasePacket({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey;
           <div>
             <p className="overline">DD-04821 · Fictional SME</p>
             <h3>Lumen Bikes GmbH</h3>
-            <p>Germany · GmbH · New relationship</p>
+            <p>Germany · GmbH · New customer application</p>
           </div>
           <div className={`decision-stamp ${scenario.tone}`} aria-live="polite">
             <span>Current Decision</span>

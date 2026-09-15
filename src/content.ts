@@ -143,7 +143,7 @@ export const decisionElements = [
   {
     name: "Entity",
     short: "Who and what",
-    detail: "Company, representative, owners, roles, and relationships form one versioned graph.",
+    detail: "Company, representative, owners, roles, and links form one versioned graph.",
   },
   {
     name: "Evidence",
