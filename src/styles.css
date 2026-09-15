@@ -287,14 +287,233 @@ summary:focus-visible {
 /* Executive brief */
 
 .brief {
-  width: min(100% - 24px, 1120px);
+  width: min(100% - 24px, 1360px);
   margin: 24px auto 80px;
+}
+
+.brief-cover {
+  min-height: calc(100svh - 112px);
+  margin-bottom: 48px;
+  padding: clamp(28px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.cover-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 14px;
+  color: var(--ink-52);
+  border-bottom: 1px solid var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cover-intro {
+  padding: clamp(40px, 6vh, 72px) 0 clamp(36px, 5vh, 64px);
+  display: grid;
+  grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1.3fr) minmax(250px, 0.55fr);
+  align-items: end;
+  gap: 32px;
+}
+
+.cover-intro h1 {
+  max-width: 16ch;
+  font-size: clamp(46px, 5.2vw, 76px);
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.cover-intro > p:last-child {
+  max-width: 36ch;
+  color: var(--ink-72);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cover-system {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 44px minmax(260px, 1.15fr) 44px minmax(220px, 0.9fr);
+  align-items: stretch;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cover-inputs,
+.cover-result,
+.cover-core {
+  min-height: 218px;
+  padding: 20px;
+}
+
+.cover-inputs > span,
+.cover-result > span,
+.cover-core > span,
+.cover-logic span {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cover-inputs > div {
+  padding: 8px 0;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  border-bottom: 1px solid var(--line);
+}
+
+.cover-inputs > div:first-of-type {
+  margin-top: 16px;
+}
+
+.cover-inputs b {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.cover-inputs small {
+  color: var(--ink-52);
+  font-size: 10px;
+}
+
+.cover-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.cover-core {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.cover-core > span {
+  color: rgb(247 245 239 / 58%);
+}
+
+.cover-core strong,
+.cover-core small {
+  display: block;
+}
+
+.cover-core strong {
+  margin-top: 30px;
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.cover-core small {
+  margin-top: 24px;
+  color: rgb(247 245 239 / 58%);
+  font-size: 9px;
+}
+
+.cover-result > div {
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+}
+
+.cover-result > div:first-of-type {
+  margin-top: 11px;
+}
+
+.cover-result strong {
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.cover-result small {
+  color: var(--ink-72);
+  font-size: 10px;
+}
+
+.cover-logic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cover-logic > div {
+  padding: 18px 20px 18px 0;
+}
+
+.cover-logic > div + div {
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+}
+
+.cover-logic p {
+  max-width: 40ch;
+  margin-top: 8px;
+  color: var(--ink-72);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.cover-actions {
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cover-actions a,
+.cover-actions button {
+  min-height: 46px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  border: 1px solid var(--ink);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cover-actions a {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.cover-actions button {
+  color: var(--ink);
+  background: transparent;
+}
+
+.cover-actions small {
+  margin-left: auto;
+  color: var(--ink-52);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  text-transform: uppercase;
 }
 
 .brief-page {
   position: relative;
+  width: min(100%, 1120px);
   min-height: 940px;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
   padding: 32px;
   border: 1px solid var(--line);
   background: var(--paper);
@@ -315,7 +534,7 @@ summary:focus-visible {
   border-bottom: 1px solid var(--line);
 }
 
-.brief-hero h1 {
+.brief-hero h2 {
   max-width: 900px;
   margin-top: 12px;
   font-size: clamp(40px, 6vw, 78px);
@@ -2389,6 +2608,24 @@ summary:focus-visible {
     margin-top: 36px;
   }
 
+  .cover-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .cover-intro > p:last-child {
+    max-width: 52ch;
+  }
+
+  .cover-system {
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1.15fr) 32px minmax(0, 0.9fr);
+  }
+
+  .cover-inputs > div {
+    grid-template-columns: 72px 1fr;
+  }
+
   .deep-dive {
     display: block;
   }
@@ -2547,6 +2784,76 @@ summary:focus-visible {
     margin: 0;
   }
 
+  .brief-cover {
+    min-height: calc(100svh - 64px);
+    margin: 0 0 24px;
+    padding: 24px 16px;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .cover-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .cover-intro {
+    padding: 42px 0 36px;
+  }
+
+  .cover-intro h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .cover-system,
+  .cover-logic {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-inputs,
+  .cover-result,
+  .cover-core {
+    min-height: 0;
+    padding: 18px 0;
+  }
+
+  .cover-core {
+    padding: 20px 18px;
+  }
+
+  .cover-arrow {
+    min-height: 34px;
+    border-top: 1px solid var(--line);
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    border-left: 0;
+    transform: rotate(90deg);
+  }
+
+  .cover-logic > div,
+  .cover-logic > div + div {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .cover-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cover-actions a,
+  .cover-actions button {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cover-actions small {
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+
   .brief-page {
     margin: 0;
     padding: 24px 16px;
@@ -2564,7 +2871,7 @@ summary:focus-visible {
     padding: 40px 0 32px;
   }
 
-  .brief-hero h1 {
+  .brief-hero h2 {
     font-size: clamp(42px, 13vw, 58px);
   }
 
@@ -3061,6 +3368,7 @@ summary:focus-visible {
 
   .site-header,
   .skip-link,
+  .brief-cover,
   .deep-dive {
     display: none !important;
   }
@@ -3100,7 +3408,7 @@ summary:focus-visible {
     padding: 7mm 0 5mm;
   }
 
-  .brief-hero h1 {
+  .brief-hero h2 {
     font-size: 41pt;
   }
 

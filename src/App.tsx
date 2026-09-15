@@ -111,17 +111,70 @@ function BriefDecisionModel() {
   );
 }
 
-function ExecutiveBrief() {
+function BriefCover({ onInteractive }: { onInteractive: () => void }) {
+  return (
+    <section className="brief-cover" aria-labelledby="cover-title">
+      <div className="cover-meta">
+        <span>Qonto Due Diligence</span>
+        <span>Outside-in product proposal · Vilol Joshi</span>
+      </div>
+
+      <div className="cover-intro">
+        <p className="overline">The Product Thesis</p>
+        <h1 id="cover-title">One decision must stay trustworthy as evidence, policy, and risk change.</h1>
+        <p>Preserve trusted evidence. Investigate the material delta. Record why the case moved.</p>
+      </div>
+
+      <div className="cover-system" aria-label="From fragmented inputs to a trustworthy decision state">
+        <div className="cover-inputs">
+          <span>Problem</span>
+          <div><b>Entity</b><small>owner changed</small></div>
+          <div><b>Evidence</b><small>two sources conflict</small></div>
+          <div><b>Policy</b><small>new version applies</small></div>
+          <div><b>Signals</b><small>one risk delta</small></div>
+        </div>
+        <div className="cover-arrow" aria-hidden="true">→</div>
+        <div className="cover-core">
+          <span>Hypothesis</span>
+          <strong>Versioned<br />Decision State</strong>
+          <small>Evidence + policy + authority + provenance</small>
+        </div>
+        <div className="cover-arrow" aria-hidden="true">→</div>
+        <div className="cover-result">
+          <span>Prove</span>
+          <div><strong>4</strong><small>trusted checks preserved</small></div>
+          <div><strong>1</strong><small>material conflict isolated</small></div>
+          <div><strong>1</strong><small>targeted request</small></div>
+        </div>
+      </div>
+
+      <div className="cover-logic">
+        <div><span>Problem Statement</span><p>Case state can drift across sources, tools, policy, and time.</p></div>
+        <div><span>Product Hypothesis</span><p>One decision state can remove repeated work without weakening control.</p></div>
+        <div><span>Validation Test</span><p>Quality holds while customer requests and reviewer rework fall.</p></div>
+      </div>
+
+      <div className="cover-actions">
+        <a href="#brief-start">Read the 5-minute brief <span aria-hidden="true">↓</span></a>
+        <button type="button" onClick={onInteractive}>Explore the interactive model <span aria-hidden="true">→</span></button>
+        <small>Fictional case · Public evidence · No Qonto internal access</small>
+      </div>
+    </section>
+  );
+}
+
+function ExecutiveBrief({ onInteractive }: { onInteractive: () => void }) {
   return (
     <main className="brief" id="main-content">
-      <article className="brief-page brief-page-one">
+      <BriefCover onInteractive={onInteractive} />
+      <article className="brief-page brief-page-one" id="brief-start">
         <div className="brief-kicker">
           <span>Senior Product Manager · Due Diligence</span>
           <span>Outside-in proposal · 15 Sep 2026</span>
         </div>
         <section className="brief-hero">
           <p className="overline">A product thesis for Qonto</p>
-          <h1>A Trustworthy Decision System for Due Diligence</h1>
+          <h2>A Trustworthy Decision System for Due Diligence</h2>
           <p className="brief-deck">
             Reduce avoidable customer and reviewer work while preserving evidence, control, and a reproducible reason for every outcome.
           </p>
@@ -953,7 +1006,7 @@ export default function App() {
     <div id="top">
       <a className="skip-link" href="#main-content">Skip to Main Content</a>
       <AppHeader view={view} onView={chooseView} />
-      {view === "brief" ? <ExecutiveBrief /> : <DeepDive scenarioKey={scenario} onScenario={chooseScenario} />}
+      {view === "brief" ? <ExecutiveBrief onInteractive={() => chooseView("deep-dive")} /> : <DeepDive scenarioKey={scenario} onScenario={chooseScenario} />}
     </div>
   );
 }

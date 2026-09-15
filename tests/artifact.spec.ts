@@ -2,13 +2,15 @@ import { expect, test } from "@playwright/test";
 
 test("the executive brief is the default reading path", async ({ page }) => {
   await page.goto("./");
+  await expect(page.getByRole("heading", { name: "One decision must stay trustworthy as evidence, policy, and risk change." })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Read the 5-minute brief" })).toHaveAttribute("href", "#brief-start");
   await expect(page.getByRole("heading", { name: "A Trustworthy Decision System for Due Diligence" })).toBeVisible();
   await expect(page.getByText("Page 2 / 2")).toBeVisible();
 });
 
 test("the interactive model and case packet work", async ({ page }) => {
   await page.goto("./");
-  await page.getByRole("button", { name: "Interactive Model" }).click();
+  await page.getByRole("button", { name: "Explore the interactive model" }).click();
   await expect(page).toHaveURL(/view=deep-dive/);
   await expect(page.getByRole("heading", { name: "Reduce unnecessary due-diligence work without weakening control." })).toBeVisible();
 
