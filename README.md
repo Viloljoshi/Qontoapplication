@@ -32,4 +32,4 @@ The included GitHub Pages workflow checks and deploys `main`. In the repository 
 ## Reading Modes
 
 - Executive brief: the default 2-page reading path, with print styling
-- Interactive deep dive: add `?view=deep-dive` or use the header switch
+- Interactive model: add `?view=deep-dive` or use the header switch

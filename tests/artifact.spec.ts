@@ -6,9 +6,9 @@ test("the executive brief is the default reading path", async ({ page }) => {
   await expect(page.getByText("Page 2 / 2")).toBeVisible();
 });
 
-test("the deep dive and case packet are interactive", async ({ page }) => {
+test("the interactive model and case packet work", async ({ page }) => {
   await page.goto("./");
-  await page.getByRole("button", { name: "Deep Dive" }).click();
+  await page.getByRole("button", { name: "Interactive Model" }).click();
   await expect(page).toHaveURL(/view=deep-dive/);
   await expect(page.getByRole("heading", { name: "Reduce unnecessary due-diligence work without weakening control." })).toBeVisible();
 

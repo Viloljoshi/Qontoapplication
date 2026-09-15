@@ -13,7 +13,7 @@ const chapterLinks = [
   ["01", "The Challenge", "challenge"],
   ["02", "Decision State", "decision-state"],
   ["03", "Case Packet", "case-packet"],
-  ["04", "Bounded Agents", "bounded-agents"],
+  ["04", "Agent Autonomy", "bounded-agents"],
   ["05", "Periodic Review", "periodic-review"],
   ["06", "Migration", "migration"],
   ["07", "Measure + Start", "measure"],
@@ -83,7 +83,7 @@ function AppHeader({ view, onView }: { view: ViewMode; onView: (view: ViewMode) 
               aria-pressed={view === "deep-dive"}
               onClick={() => onView("deep-dive")}
             >
-              Deep Dive
+              Interactive Model
             </button>
           </div>
           {view === "brief" && (
@@ -131,7 +131,7 @@ function ExecutiveBrief() {
           <div>
             <EvidenceTag type="observed">Observed</EvidenceTag>
             <p>
-              Qonto serves 600,000+ customers in 8 markets. The role spans identity, fraud, sanctions, periodic review, agentic workflows, and reviewer migration.<SourceRef id={1} />
+              Qonto serves 600,000+ customers in 8 markets. Account opening and periodic review use identity, company, and beneficial-owner evidence.<SourceRef id={1} /><SourceRef id={2} /><SourceRef id={3} />
             </p>
           </div>
           <div>
@@ -157,7 +157,7 @@ function ExecutiveBrief() {
             </h2>
           </div>
           <p>
-            Public Qonto material shows the breadth of evidence used at account opening and confirms recurring reviews for active accounts.<SourceRef id={3} /><SourceRef id={4} /> The role also signals a move from manual checks toward agentic automation.<SourceRef id={1} /> The product opportunity is to make each decision clear, current, and recoverable while routing only material ambiguity to people.
+            Public Qonto material shows the breadth of evidence used at account opening and confirms recurring reviews for active accounts.<SourceRef id={2} /><SourceRef id={3} /> The product opportunity is to make each decision clear, current, and recoverable while routing material ambiguity to specialists.
           </p>
         </section>
 
@@ -189,7 +189,7 @@ function ExecutiveBrief() {
             </div>
             <div className="decision-stamp review">
               <span>Current Decision</span>
-              <strong>Human Review</strong>
+              <strong>Specialist Review</strong>
             </div>
           </div>
 
@@ -246,7 +246,7 @@ function ExecutiveBrief() {
           <div>
             <p className="overline">Relevant Prior Pattern · Solytics Partners</p>
             <p>
-              I led regulated compliance-product work using OCR + LLM extraction, field confidence, exception routing, human review, guardrails, and audit trails. Prior-role outcomes included a 45% reduction in compliance review effort and a 25% cut in AML/KYC integration turnaround. These are prior-role results, not Qonto estimates.
+              I led regulated compliance-product work using OCR + LLM extraction, field confidence, exception routing, policy guards, scoped tool execution, and audit trails. Prior-role outcomes included a 45% reduction in compliance review effort and a 25% cut in AML/KYC integration turnaround. These are prior-role results, not Qonto estimates.
             </p>
           </div>
           <div>
@@ -258,7 +258,7 @@ function ExecutiveBrief() {
         </section>
 
         <div className="brief-close">
-          <p>Open the Interactive Deep Dive for the case packet, autonomy contract, periodic-review model, migration ladder, and KPI tree.</p>
+          <p>Open the Interactive Model for the case packet, autonomy gates, periodic-review model, migration ladder, and KPI tree.</p>
         </div>
         <footer className="brief-page-footer">
           <span>Vilol Joshi · Product hypothesis, based on public sources</span>
@@ -468,12 +468,12 @@ function CasePacket({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey;
 
 function AgentWorkflow() {
   const steps = [
-    ["01", "Build State", "Entity graph + required checks"],
-    ["02", "Gather", "Approved sources + originals"],
-    ["03", "Compare", "Conflicts + missing proof"],
-    ["04", "Run Checks", "Rules + provider signals"],
-    ["05", "Route", "Resolve, ask, or escalate"],
-    ["06", "Record", "Inputs + versions + authority"],
+    ["01", "Trigger", "Signup, review, material change"],
+    ["02", "Plan", "Select permitted checks + tools"],
+    ["03", "Investigate", "Gather, compare, retry"],
+    ["04", "Verify", "Evidence + policy + permission"],
+    ["05", "Commit", "Resolve, ask, or escalate"],
+    ["06", "Observe", "Trace, sample, evaluate"],
   ];
   return (
     <div className="agent-flow" aria-label="Bounded agent workflow">
@@ -485,6 +485,106 @@ function AgentWorkflow() {
         </div>
       ))}
     </div>
+  );
+}
+
+function AutonomyGate() {
+  const gates = [
+    ["01", "Policy", "A versioned rule permits this outcome."],
+    ["02", "Evidence", "Required proof is present and source-linked."],
+    ["03", "Permission", "The agent and tool hold scoped authority."],
+    ["04", "Evaluation", "The cohort clears its signed quality floor."],
+  ];
+
+  return (
+    <div className="autonomy-gate" aria-label="Four gates for autonomous action">
+      <div className="autonomy-gate-heading">
+        <div>
+          <p className="overline">Autonomy Gate</p>
+          <h3>All four gates must pass before an agent commits a decision.</h3>
+        </div>
+        <p>Model confidence can inform a gate. It cannot grant authority.</p>
+      </div>
+      <div className="autonomy-gate-grid">
+        {gates.map(([number, title, note]) => (
+          <div key={number}>
+            <span>{number}</span>
+            <strong>{title}</strong>
+            <p>{note}</p>
+          </div>
+        ))}
+      </div>
+      <div className="autonomy-outcomes">
+        <div><span>4 / 4 pass</span><strong>Commit routine outcome</strong><p>Write the decision, reason, evidence links, and execution trace.</p></div>
+        <div><span>Any gate fails</span><strong>Recover or escalate</strong><p>Retry an approved path or send one precise question to a specialist.</p></div>
+      </div>
+    </div>
+  );
+}
+
+function BuildPartnerBoundary() {
+  return (
+    <div className="build-boundary">
+      <div className="section-line">
+        <p className="overline">Build + Partner Boundary · Hypothesis</p>
+        <p className="line-note">Own the decision. Keep signal providers replaceable.</p>
+      </div>
+      <div className="build-boundary-grid">
+        <div>
+          <span>Own</span>
+          <strong>Decision layer</strong>
+          <p>Entity state, policy orchestration, evidence lineage, authority, decision reason, and audit record.</p>
+        </div>
+        <div>
+          <span>Partner</span>
+          <strong>Specialist evidence</strong>
+          <p>Identity and liveness, company registers, sanctions data, and document-authenticity signals.</p>
+        </div>
+        <div>
+          <span>Design for Change</span>
+          <strong>Stable contracts</strong>
+          <p>Common schemas, provider replay, shadow challengers, fallback paths, and source-level quality measures.</p>
+        </div>
+      </div>
+      <p className="boundary-criteria">Decide with market coverage, evidence quality, explainability, data residency, failure recovery, latency, and total cost.</p>
+    </div>
+  );
+}
+
+function SolyticsProof() {
+  return (
+    <section className="solytics-proof" aria-labelledby="solytics-proof-title">
+      <header>
+        <div>
+          <p className="overline">Built Before · Solytics Partners</p>
+          <h3 id="solytics-proof-title">A governed compliance-agent pattern</h3>
+        </div>
+        <span>Prior-role evidence · No Qonto estimate</span>
+      </header>
+      <div className="solytics-proof-grid">
+        <div>
+          <span>Product Problem</span>
+          <p>Modernise a legacy compliance platform for enterprise banking teams without weakening security or regulatory sign-off.</p>
+        </div>
+        <div>
+          <span>System I Led</span>
+          <p>OCR + LLM extraction, field confidence, pre/post-model guards, scoped tool calls, verification, and an audit trail.</p>
+        </div>
+        <div>
+          <span>Operating Model</span>
+          <p>Routine evidence followed governed paths. Specialists handled exceptions. Golden cases and reviewer corrections fed regression and cohort evaluation.</p>
+        </div>
+        <div className="solytics-results">
+          <span>Previous-Role Results</span>
+          <strong>45%</strong><p>less compliance review effort</p>
+          <strong>25%</strong><p>faster AML/KYC integration turnaround</p>
+        </div>
+      </div>
+      <footer>
+        <span>Transferable principle</span>
+        <p>Give the agent narrow authority, test the full action path, and preserve the evidence behind each result.</p>
+      </footer>
+    </section>
   );
 }
 
@@ -510,13 +610,13 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             number="01"
             label="The Challenge"
             title="Reduce unnecessary due-diligence work without weakening control."
-            intro="Qonto’s public role description names a connected product surface: entry checks, agentic workflows, periodic review, and a reviewer-tool migration. The common unit is the decision state."
+            intro="Entry checks, periodic review, reviewer work, and migration all depend on the same unit: a decision state that remains current, explainable, and recoverable."
           />
           <div className="evidence-board">
             <article>
               <EvidenceTag type="observed">Observed</EvidenceTag>
               <h3>Scale + Scope</h3>
-              <p>Qonto reports 600,000+ customers across 8 markets. The role owns identity, fraud, sanctions, periodic review, and reviewer workflows.<SourceRef id={1} /><SourceRef id={2} /></p>
+              <p>Qonto reports 600,000+ customers across 8 markets. Public flows use identity, company, and ownership evidence at account opening and during recurring reviews.<SourceRef id={1} /><SourceRef id={2} /><SourceRef id={3} /></p>
             </article>
             <article>
               <EvidenceTag type="hypothesis">Hypothesis</EvidenceTag>
@@ -557,7 +657,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
           <details className="deep-note">
             <summary>Inspect the minimum decision record</summary>
             <div className="record-grid">
-              <span>case_id</span><span>entity_graph_version</span><span>evidence_refs</span><span>policy_version</span><span>signal_versions</span><span>decision_reason</span><span>authority</span><span>tool_history</span><span>human_override</span><span>final_outcome</span>
+              <span>case_id</span><span>entity_graph_version</span><span>evidence_refs</span><span>policy_version</span><span>signal_versions</span><span>decision_reason</span><span>authority</span><span>tool_history</span><span>specialist_override</span><span>final_outcome</span>
             </div>
           </details>
           <SectionLens
@@ -591,30 +691,33 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
         <section className="chapter" id="bounded-agents">
           <ChapterHeading
             number="04"
-            label="Agentic Workflow"
-            title="Match authority to confidence and consequence."
-            intro={<>Rules own hard policy. Models score patterns. Agents collect and compare evidence. People decide material ambiguity. Qonto already presents a public AI pattern where consequential actions keep an approval boundary.<SourceRef id={5} /></>}
+            label="Autonomous Workflow"
+            title="Let agents finish routine cases inside a signed authority envelope."
+            intro={<>An agent may plan, call approved tools, recover from provider failure, and commit an eligible case. Deterministic gates decide whether it has authority. Specialists handle policy gaps, material sanctions ambiguity, and adverse judgment. Qonto’s public AI and security pages describe approval boundaries, ML signals, and automated safeguards.<SourceRef id={4} /><SourceRef id={6} /></>}
           />
           <AgentWorkflow />
 
           <div className="mechanism-grid">
             <div className="mechanism-head"><span>Mechanism</span><span>Best Fit</span><span>Control</span></div>
-            <div><strong>Rules</strong><p>Eligibility, required checks, hard thresholds</p><span>Version + tests</span></div>
-            <div><strong>Traditional ML</strong><p>Fraud score, anomaly signal, entity match rank</p><span>Calibration + drift</span></div>
-            <div><strong>LLM / Agent</strong><p>Extract, compare, summarise, retrieve, recommend</p><span>Grounding + tool scope</span></div>
-            <div><strong>Human</strong><p>Material ambiguity, exception judgment, approval</p><span>Authority + QA</span></div>
+            <div><strong>Policy Engine</strong><p>Eligibility, required checks, authority, hard stops</p><span>Versioned rules + tests</span></div>
+            <div><strong>Multimodal Model</strong><p>Extract and reconcile documents, images, and free text</p><span>Field grounding + evals</span></div>
+            <div><strong>Predictive ML + Graph</strong><p>Fraud risk, anomaly signals, entity resolution, network patterns</p><span>Cohort calibration + drift</span></div>
+            <div><strong>Agent Runtime</strong><p>Plan, select tools, manage state, retry, and recover</p><span>Scoped identity + budgets</span></div>
+            <div><strong>Specialist Authority</strong><p>Policy gaps, material ambiguity, adverse judgment</p><span>Case packet + override reason</span></div>
           </div>
+
+          <AutonomyGate />
 
           <div className="agent-controls">
             <div>
-              <p className="overline">Confidence × Consequence</p>
-              <div className="consequence-matrix" aria-label="Confidence by consequence matrix">
-                <div className="axis y">Confidence</div>
+              <p className="overline">Evidence Strength × Consequence</p>
+              <div className="consequence-matrix" aria-label="Evidence strength by consequence matrix">
+                <div className="axis y">Evidence Strength</div>
                 <div className="axis x">Consequence</div>
-                <div className="matrix-cell ask"><span>Low confidence · Low consequence</span><strong>Ask / Recover</strong><small>Request a clearer non-material field</small></div>
-                <div className="matrix-cell human"><span>Low confidence · High consequence</span><strong>Human Judgment</strong><small>Ownership or sanctions ambiguity</small></div>
-                <div className="matrix-cell automate"><span>High confidence · Low consequence</span><strong>Automate</strong><small>Normalise a supported address</small></div>
-                <div className="matrix-cell controlled"><span>High confidence · High consequence</span><strong>Controlled Path</strong><small>Hard gates + explicit authority</small></div>
+                <div className="matrix-cell ask"><span>Weak evidence · Low consequence</span><strong>Agent Recovers</strong><small>Retry a source or request one missing field</small></div>
+                <div className="matrix-cell human"><span>Weak evidence · High consequence</span><strong>Specialist Decides</strong><small>Ownership or sanctions ambiguity</small></div>
+                <div className="matrix-cell automate"><span>Strong evidence · Low consequence</span><strong>Agent Acts</strong><small>Refresh a check or normalise a supported field</small></div>
+                <div className="matrix-cell controlled"><span>Strong evidence · High consequence</span><strong>Rule-Gated Path</strong><small>Explicit authority + sampled oversight</small></div>
               </div>
             </div>
             <div className="autonomy-contract">
@@ -622,31 +725,35 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
               <div className="contract-half may">
                 <span>May</span>
                 <ul>
-                  <li>Retrieve approved evidence</li>
-                  <li>Compare sources</li>
-                  <li>Summarise case state</li>
-                  <li>Request deterministic checks</li>
-                  <li>Recommend a next step</li>
+                  <li>Plan across approved tools</li>
+                  <li>Retry through an approved fallback</li>
+                  <li>Refresh expiring evidence</li>
+                  <li>Resolve an eligible case after all gates pass</li>
+                  <li>Send a policy-approved evidence request</li>
                 </ul>
               </div>
               <div className="contract-half blocked">
                 <span>Cannot</span>
                 <ul>
-                  <li>Invent evidence</li>
-                  <li>Override hard policy</li>
+                  <li>Change policy or thresholds</li>
+                  <li>Create its own permissions</li>
+                  <li>Overwrite source evidence</li>
                   <li>Clear material sanctions ambiguity</li>
-                  <li>Hide low confidence</li>
-                  <li>Act outside granted authority</li>
+                  <li>Issue an adverse outcome outside explicit authority</li>
                 </ul>
               </div>
             </div>
           </div>
+          <p className="agent-reference-note">Current agent operations guidance treats identity, memory, tool access, policy checkpoints, tracing, and evaluation as one runtime control surface.<SourceRef id={7} /><SourceRef id={8} /> EU guidance also treats an agent’s external actions as part of the governed AI system.<SourceRef id={9} /></p>
+
+          <BuildPartnerBoundary />
+          <SolyticsProof />
           <SectionLens
-            problem="Model confidence can be mistaken for authority."
-            hypothesis="Bounded tools automate routine evidence work."
-            approach="Define contracts, gold cases, and abstention paths."
-            risk="Prompt drift or tool errors alter case state."
-            measure="False clears, abstention quality, overrides."
+            problem="A capable model can still lack authority."
+            hypothesis="Four runtime gates let agents finish routine cases."
+            approach="Start with one cohort, signed evals, and scoped tools."
+            risk="Policy drift, tool failure, or permission creep changes outcomes."
+            measure="False clears, gate failures, recovery, specialist overrides."
             partners="ML, Engineering, Risk, Security, Compliance."
           />
         </section>
@@ -656,7 +763,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             number="05"
             label="Periodic Review"
             title="Re-verify the material delta, subject to legal obligations."
-            intro={<>Qonto publicly confirms periodic checks for active accounts.<SourceRef id={4} /> EU AMLR, which applies from July 2027, also points to risk-based periodic and event-triggered updates.<SourceRef id={6} /> The product bet is to reuse trusted evidence when policy permits.</>}
+            intro={<>Qonto’s customer help page confirms periodic checks for active accounts.<SourceRef id={3} /> EU AMLR, which applies from July 2027, also points to risk-based periodic and event-triggered updates.<SourceRef id={5} /> The product bet is to reuse trusted evidence when policy permits.</>}
           />
           <div className="delta-system">
             <div className="delta-input">
@@ -684,7 +791,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             <div><span>Invisible</span><p>Waiting while no customer action is possible.</p></div>
           </div>
           <ChangeMind>
-            If policy, regulator expectations, or source reliability requires a full refresh for a cohort, the system should run that refresh. Delta logic narrows work only where Compliance and Legal approve reuse.
+            If policy, regulator expectations, or source reliability requires a full refresh for a cohort, the system should run that refresh. Delta logic narrows work where Compliance and Legal approve reuse.
           </ChangeMind>
           <SectionLens
             problem="A full restart repeats valid work."
@@ -741,7 +848,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             number="07"
             label="Measurement + Collaboration"
             title="Optimise for straight-through resolution that remains trustworthy."
-            intro="A speed metric alone can reward unsafe automation. The north-star candidate counts eligible cases only after decision-quality and control thresholds pass."
+            intro="A speed metric alone can reward unsafe automation. The north-star candidate requires decision-quality and control thresholds before it counts an eligible case."
           />
           <div className="north-star">
             <div>
@@ -757,20 +864,6 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             <div className="kpi-branch ops"><strong>Operations</strong><span>Handling time</span><span>Rework</span><span>Queue age</span></div>
             <div className="kpi-branch quality"><strong>Decision Quality</strong><span>False clear</span><span>False escalation</span><span>Override rate</span></div>
             <div className="kpi-branch reliability"><strong>Reliability</strong><span>Provider failure</span><span>Decision latency</span><span>Recovery time</span></div>
-          </div>
-
-          <div className="transfer-section">
-            <div className="section-line">
-              <p className="overline">Proof of Transfer · Solytics Partners</p>
-              <p className="line-note">Prior-role results, not Qonto estimates</p>
-            </div>
-            <div className="transfer-table" role="table" aria-label="Transferable experience matrix">
-              <div className="transfer-head" role="row"><span role="columnheader">Qonto Challenge</span><span role="columnheader">Prior Pattern</span><span role="columnheader">What I Did</span><span role="columnheader">Transferable Principle</span></div>
-              <div role="row"><span role="cell">Mixed documents</span><span role="cell">OCR + LLM</span><span role="cell">Built field confidence and exception routing for KYC/AML evidence</span><span role="cell">Ground model output in source proof</span></div>
-              <div role="row"><span role="cell">Routine vs ambiguous</span><span role="cell">Confidence + HITL</span><span role="cell">Reduced prior compliance review effort by 45%</span><span role="cell">Route by confidence and consequence</span></div>
-              <div role="row"><span role="cell">Agent control</span><span role="cell">Guardrails + audit</span><span role="cell">Defined pre/post-model checks, tool bounds, review, and verification</span><span role="cell">Grant narrow, observable authority</span></div>
-              <div role="row"><span role="cell">Provider complexity</span><span role="cell">Shared integrations</span><span role="cell">Standardised AML/KYC APIs, cutting prior integration turnaround by 25%</span><span role="cell">Stable contracts reduce repeated delivery work</span></div>
-            </div>
           </div>
 
           <div className="collaboration-model">
@@ -805,7 +898,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
         <section className="sources-section" id="sources">
           <div className="sources-heading">
             <p className="overline">Sources + Boundaries</p>
-            <h2>Public evidence only.</h2>
+            <h2>Public evidence, with clear boundaries.</h2>
             <p>Accessed 15 Sep 2026. Product concepts, case data, rules, metrics, and screen layouts in this artifact are proposals unless marked observed.</p>
           </div>
           <ol>

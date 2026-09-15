@@ -1473,6 +1473,115 @@ summary:focus-visible {
   font-size: 9px;
 }
 
+.autonomy-gate {
+  margin-top: 48px;
+  border: 1px solid var(--ink);
+}
+
+.autonomy-gate-heading {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 40px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.autonomy-gate-heading h3 {
+  max-width: 30ch;
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.autonomy-gate-heading > p {
+  max-width: 40ch;
+  color: var(--ink-52);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.autonomy-gate-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.autonomy-gate-grid > div {
+  min-height: 150px;
+  padding: 18px;
+}
+
+.autonomy-gate-grid > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.autonomy-gate-grid span,
+.autonomy-gate-grid strong,
+.autonomy-gate-grid p,
+.autonomy-outcomes span,
+.autonomy-outcomes strong,
+.autonomy-outcomes p {
+  display: block;
+}
+
+.autonomy-gate-grid span,
+.autonomy-outcomes span {
+  color: var(--ink-52);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.autonomy-gate-grid strong {
+  margin-top: 28px;
+  font-size: 14px;
+}
+
+.autonomy-gate-grid p {
+  margin-top: 7px;
+  color: var(--ink-52);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.autonomy-outcomes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--ink);
+}
+
+.autonomy-outcomes > div {
+  padding: 18px 22px;
+}
+
+.autonomy-outcomes > div:first-child {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.autonomy-outcomes > div + div {
+  border-left: 1px solid var(--ink);
+}
+
+.autonomy-outcomes > div:first-child span,
+.autonomy-outcomes > div:first-child p {
+  color: rgb(247 245 239 / 58%);
+}
+
+.autonomy-outcomes strong {
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+.autonomy-outcomes p {
+  margin-top: 5px;
+  color: var(--ink-52);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
 .agent-controls {
   margin-top: 48px;
   display: grid;
@@ -1590,6 +1699,158 @@ summary:focus-visible {
   color: var(--ink-72);
   font-size: 11px;
   line-height: 1.45;
+}
+
+.agent-reference-note {
+  max-width: 88ch;
+  margin-top: 28px;
+  color: var(--ink-52);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.build-boundary {
+  margin-top: 56px;
+}
+
+.build-boundary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.build-boundary-grid > div {
+  min-height: 168px;
+  padding: 20px;
+}
+
+.build-boundary-grid > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.build-boundary-grid span,
+.build-boundary-grid strong,
+.build-boundary-grid p {
+  display: block;
+}
+
+.build-boundary-grid span {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.build-boundary-grid strong {
+  margin-top: 26px;
+  font-size: 16px;
+}
+
+.build-boundary-grid p {
+  margin-top: 8px;
+  color: var(--ink-52);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.boundary-criteria {
+  padding: 12px 20px;
+  color: var(--ink-52);
+  border-bottom: 1px solid var(--line);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.solytics-proof {
+  margin-top: 56px;
+  border: 1px solid var(--ink);
+}
+
+.solytics-proof > header {
+  padding: 20px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.solytics-proof h3 {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.solytics-proof > header > span,
+.solytics-proof-grid > div > span,
+.solytics-proof footer span {
+  color: var(--ink-52);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.solytics-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 0.9fr;
+}
+
+.solytics-proof-grid > div {
+  min-height: 190px;
+  padding: 20px;
+}
+
+.solytics-proof-grid > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.solytics-proof-grid > div > p {
+  margin-top: 28px;
+  color: var(--ink-72);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.solytics-proof-grid .solytics-results {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.solytics-proof-grid .solytics-results > span,
+.solytics-proof-grid .solytics-results > p {
+  color: rgb(247 245 239 / 58%);
+}
+
+.solytics-proof-grid .solytics-results strong {
+  margin-top: 18px;
+  display: block;
+  color: var(--paper);
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.solytics-proof-grid .solytics-results > p {
+  margin-top: 2px;
+  font-size: 8px;
+}
+
+.solytics-proof footer {
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 20px;
+  border-top: 1px solid var(--ink);
+}
+
+.solytics-proof footer p {
+  font-size: 10px;
+  line-height: 1.5;
 }
 
 /* Periodic review */
@@ -1920,48 +2181,6 @@ summary:focus-visible {
   font-size: 10px;
 }
 
-.transfer-section {
-  margin-top: 64px;
-}
-
-.transfer-table {
-  margin-top: 14px;
-  border-top: 1px solid var(--ink);
-}
-
-.transfer-table > div {
-  display: grid;
-  grid-template-columns: 0.8fr 0.75fr 1.5fr 1.2fr;
-  gap: 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.transfer-table > div > span {
-  min-width: 0;
-  padding: 14px;
-  color: var(--ink-72);
-  font-size: 10px;
-  line-height: 1.45;
-}
-
-.transfer-table > div > span:first-child {
-  padding-left: 0;
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.transfer-table > div > span + span {
-  border-left: 1px solid var(--line);
-}
-
-.transfer-table .transfer-head > span {
-  color: var(--ink-52);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 8px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 .collaboration-model {
   margin-top: 64px;
   display: grid;
@@ -2231,6 +2450,22 @@ summary:focus-visible {
     gap: 64px;
   }
 
+  .autonomy-gate-grid,
+  .solytics-proof-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .autonomy-gate-grid > div:nth-child(3),
+  .solytics-proof-grid > div:nth-child(3) {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .autonomy-gate-grid > div:nth-child(4),
+  .solytics-proof-grid > div:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+
   .delta-system {
     grid-template-columns: 1fr 36px 1fr;
   }
@@ -2450,6 +2685,11 @@ summary:focus-visible {
   .case-workspace,
   .agent-flow,
   .agent-controls,
+  .autonomy-gate-heading,
+  .autonomy-gate-grid,
+  .autonomy-outcomes,
+  .build-boundary-grid,
+  .solytics-proof-grid,
   .friction-budget,
   .migration-ladder,
   .parity-grid,
@@ -2461,6 +2701,69 @@ summary:focus-visible {
   .sources-section,
   .deep-footer {
     grid-template-columns: 1fr;
+  }
+
+  .autonomy-gate-heading {
+    align-items: start;
+    gap: 14px;
+  }
+
+  .autonomy-gate-grid > div,
+  .autonomy-gate-grid > div + div,
+  .autonomy-gate-grid > div:nth-child(3),
+  .autonomy-gate-grid > div:nth-child(4) {
+    min-height: 0;
+    padding: 16px;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .autonomy-gate-grid strong {
+    margin-top: 12px;
+  }
+
+  .autonomy-outcomes > div + div {
+    border-top: 1px solid var(--ink);
+    border-left: 0;
+  }
+
+  .build-boundary-grid > div,
+  .build-boundary-grid > div + div {
+    min-height: 0;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .build-boundary-grid strong,
+  .solytics-proof-grid > div > p {
+    margin-top: 12px;
+  }
+
+  .boundary-criteria {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .solytics-proof > header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .solytics-proof-grid > div,
+  .solytics-proof-grid > div + div,
+  .solytics-proof-grid > div:nth-child(3),
+  .solytics-proof-grid > div:nth-child(4) {
+    min-height: 0;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .solytics-proof footer {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .evidence-board article,
@@ -2689,14 +2992,6 @@ summary:focus-visible {
     min-height: 0;
     border-bottom: 1px solid var(--line);
     border-left: 0;
-  }
-
-  .transfer-table {
-    overflow-x: auto;
-  }
-
-  .transfer-table > div {
-    min-width: 720px;
   }
 
   .collaboration-model .overline {
