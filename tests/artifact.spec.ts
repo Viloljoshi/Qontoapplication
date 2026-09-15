@@ -2,7 +2,8 @@ import { expect, test } from "@playwright/test";
 
 test("the executive brief is the default reading path", async ({ page }) => {
   await page.goto("./");
-  await expect(page.getByRole("heading", { name: "One decision must stay trustworthy as evidence, policy, and risk change." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Four checks are clear. Ownership is not." })).toBeVisible();
+  await expect(page.getByText("At sign-up, Qonto must decide whether this fictional SME can become a customer.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Read the 5-minute brief" })).toHaveAttribute("href", "#brief-start");
   await expect(page.getByRole("heading", { name: "A Trustworthy Decision System for Due Diligence" })).toBeVisible();
   await expect(page.getByText("Page 2 / 2")).toBeVisible();

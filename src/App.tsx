@@ -115,49 +115,51 @@ function BriefCover({ onInteractive }: { onInteractive: () => void }) {
   return (
     <section className="brief-cover" aria-labelledby="cover-title">
       <div className="cover-meta">
-        <span>Qonto Due Diligence</span>
-        <span>Outside-in product proposal · Vilol Joshi</span>
+        <span>Entry into relationship · Worked case</span>
+        <span>Lumen Bikes GmbH · Germany · Fictional</span>
       </div>
 
       <div className="cover-intro">
-        <p className="overline">The Product Thesis</p>
-        <h1 id="cover-title">One decision must stay trustworthy as evidence, policy, and risk change.</h1>
-        <p>Preserve trusted evidence. Investigate the material delta. Record why the case moved.</p>
+        <p className="overline">The Product Problem</p>
+        <h1 id="cover-title">Four checks are clear. Ownership is not.</h1>
+        <p>At sign-up, Qonto must decide whether this fictional SME can become a customer. Its company, representative, identity, and sanctions checks have cleared. Two ownership sources conflict.</p>
       </div>
 
-      <div className="cover-system" aria-label="From fragmented inputs to a trustworthy decision state">
+      <div className="cover-system" aria-label="A fictional due-diligence case and proposed handling">
         <div className="cover-inputs">
-          <span>Problem</span>
-          <div><b>Entity</b><small>owner changed</small></div>
-          <div><b>Evidence</b><small>two sources conflict</small></div>
-          <div><b>Policy</b><small>new version applies</small></div>
-          <div><b>Signals</b><small>one risk delta</small></div>
+          <span>What is known</span>
+          <div><b>Company</b><small>Active in official register</small></div>
+          <div><b>Authority</b><small>Representative confirmed</small></div>
+          <div><b>Identity</b><small>ID and liveness verified</small></div>
+          <div><b>Sanctions</b><small>No material match</small></div>
+          <div className="cover-conflict"><b>Ownership</b><small>Register 60/40 · uploaded list 75/25</small></div>
         </div>
         <div className="cover-arrow" aria-hidden="true">→</div>
         <div className="cover-core">
-          <span>Hypothesis</span>
-          <strong>Versioned<br />Decision State</strong>
-          <small>Evidence + policy + authority + provenance</small>
+          <span>Decision moment</span>
+          <strong>Can Lumen Bikes enter the relationship?</strong>
+          <small>Clear · Ask · Specialist review · Decline</small>
         </div>
         <div className="cover-arrow" aria-hidden="true">→</div>
         <div className="cover-result">
-          <span>Prove</span>
-          <div><strong>4</strong><small>trusted checks preserved</small></div>
-          <div><strong>1</strong><small>material conflict isolated</small></div>
-          <div><strong>1</strong><small>targeted request</small></div>
+          <span>Proposed handling</span>
+          <div><strong>4</strong><small>cleared checks preserved</small></div>
+          <div><strong>1</strong><small>ownership conflict isolated</small></div>
+          <div><strong>1</strong><small>targeted evidence request</small></div>
+          <p>Specialist review until resolved</p>
         </div>
       </div>
 
       <div className="cover-logic">
-        <div><span>Problem Statement</span><p>Case state can drift across sources, tools, policy, and time.</p></div>
-        <div><span>Product Hypothesis</span><p>One decision state can remove repeated work without weakening control.</p></div>
-        <div><span>Validation Test</span><p>Quality holds while customer requests and reviewer rework fall.</p></div>
+        <div><span>Problem Hypothesis</span><p>When one source conflicts, reviewers may rebuild cleared work and customers may repeat valid proof.</p></div>
+        <div><span>Product Hypothesis</span><p>Preserve cleared assertions. Re-check the conflict. Route it with the evidence and reason attached.</p></div>
+        <div><span>Proof Test</span><p>Shadow one Germany, GmbH, ownership-conflict cohort. Compare requests, rework, decision quality, and reconstruction.</p></div>
       </div>
 
       <div className="cover-actions">
         <a href="#brief-start">Read the 5-minute brief <span aria-hidden="true">↓</span></a>
         <button type="button" onClick={onInteractive}>Explore the interactive model <span aria-hidden="true">→</span></button>
-        <small>Fictional case · Public evidence · No Qonto internal access</small>
+        <small>Fictional SME case · Hypotheses to validate</small>
       </div>
     </section>
   );
@@ -206,11 +208,11 @@ function ExecutiveBrief({ onInteractive }: { onInteractive: () => void }) {
           <div>
             <p className="overline">The Product Problem</p>
             <h2>
-              Keep one trustworthy decision state as identity, company, ownership, evidence, policy, and risk change across countries and time.
+              At sign-up and periodic review, one unresolved fact can make the customer and reviewer repeat work on an otherwise clear case.
             </h2>
           </div>
           <p>
-            Public Qonto material shows the breadth of evidence used at account opening and confirms recurring reviews for active accounts.<SourceRef id={2} /><SourceRef id={3} /> The product opportunity is to make each decision clear, current, and recoverable while routing material ambiguity to specialists.
+            Public Qonto material shows the breadth of evidence used at account opening and confirms recurring reviews for active accounts.<SourceRef id={2} /><SourceRef id={3} /> The hypothesis is to preserve each cleared assertion with its evidence and policy, re-check what changed, and route material ambiguity to the right authority.
           </p>
         </section>
 
@@ -970,7 +972,7 @@ function DeepDive({ scenarioKey, onScenario }: { scenarioKey: CaseScenarioKey; o
             <span>Prepared by</span>
             <strong>Vilol Joshi</strong>
           </div>
-          <p>Outside-in product work for discussion. No Qonto endorsement or internal access is implied.</p>
+          <p>Outside-in product work for discussion.</p>
           <a href="mailto:joshivilol1011@gmail.com">Start a Conversation</a>
         </footer>
       </div>
