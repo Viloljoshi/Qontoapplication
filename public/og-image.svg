@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f5ef"/>
+  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#18171a" stroke-width="2"/>
+  <text x="88" y="108" font-family="Arial, sans-serif" font-size="19" letter-spacing="3" fill="#6a56cf">OUTSIDE-IN PRODUCT PROPOSAL · QONTO</text>
+  <text x="88" y="220" font-family="Arial, sans-serif" font-size="70" font-weight="400" fill="#18171a">A Trustworthy</text>
+  <text x="88" y="300" font-family="Arial, sans-serif" font-size="70" font-weight="400" fill="#18171a">Decision System</text>
+  <text x="88" y="380" font-family="Arial, sans-serif" font-size="70" font-weight="400" fill="#18171a">for Due Diligence</text>
+  <line x1="88" y1="444" x2="1112" y2="444" stroke="#18171a" stroke-opacity=".2"/>
+  <text x="88" y="500" font-family="Arial, sans-serif" font-size="24" fill="#18171a" fill-opacity=".62">Executive brief + interactive case packet</text>
+  <text x="1112" y="536" text-anchor="end" font-family="Arial, sans-serif" font-size="20" fill="#18171a">Vilol Joshi · 2026</text>
+  <circle cx="1096" cy="104" r="16" fill="#6a56cf"/>
+</svg>
